@@ -12,7 +12,7 @@ services:
       - /srv/gitlab-ce/data:/var/opt/gitlab:z
     shm_size: "256m"
     environment:
-      GITLAB_OMNIBUS_CONFIG:
+      GITLAB_OMNIBUS_CONFIG: "nginx['redirect_http_to_https'] = true"
     secrets:
       - gitlab_root_password
 configs:
