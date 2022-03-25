@@ -21,7 +21,7 @@ services:
       - gitlab_root_password
 configs:
   gitlab:
-    file: ../configs/gitlab.rb
+    file: ./gitlab.rb
 secrets:
   gitlab_root_password:
-    file: ../configs/root_password.txt
+    file: ./root_password.txt
