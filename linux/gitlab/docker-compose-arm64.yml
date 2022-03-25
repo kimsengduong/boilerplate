@@ -2,7 +2,6 @@ version: "3.6"
 services:
   gitlab:
     image: yrzr/gitlab-ce-arm64v8:latest
-    command: sh -c "./script/create-volume-path.sh"
     ports:
       - "22:22"
       - "80:80"
