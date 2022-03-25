@@ -13,7 +13,7 @@ services:
     shm_size: "256m"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        "from_file('/omnibus_config.rb')"
+            "from_file('/omnibus_config.rb')"
     configs:
       - source: gitlab
         target: /omnibus_config.rb
