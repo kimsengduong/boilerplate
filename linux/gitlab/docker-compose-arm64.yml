@@ -11,7 +11,9 @@ services:
       - /srv/gitlab-ce/logs:/var/log/gitlab:z
       - /srv/gitlab-ce/data:/var/opt/gitlab:z
     environment:
-      GITLAB_OMNIBUS_CONFIG: "nginx['redirect_http_to_https'] = true"
+      GITLAB_OMNIBUS_CONFIG: |
+            "from_file('/omnibus_config.rb')"
+            nginx['redirect_http_to_https'] = true
     secrets:
       - gitlab_root_password
 configs:
