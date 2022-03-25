@@ -1,7 +1,7 @@
 ### Run Docker Compose
 
-`docker stack deploy --compose-file docker-compose.yml gitlab`
+`docker stack deploy --compose-file ./docker/docker-compose.yml gitlab`
 
 ### Install With ARM64 Architecture
 
-`docker stack deploy --compose-file docker-compose-arm64.yml gitlab`
+`sh install-arm64.sh`
