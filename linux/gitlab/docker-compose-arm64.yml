@@ -7,10 +7,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - "/srv/gitlab/config:/etc/gitlab"
-      - "/srv/gitlab/logs:/var/log/gitlab"
-      - "/srv/gitlab/data:/var/opt/gitlab"
-
+      - $GITLAB_HOME/conf:/etc/gitlab:z
+      - $GITLAB_HOME/logs:/var/log/gitlab:z
+      - $GITLAB_HOME/data:/var/opt/gitlab:z
     shm_size: "256m"
     environment:
       GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
@@ -19,11 +18,6 @@ services:
         target: /omnibus_config.rb
     secrets:
       - gitlab_root_password
-  gitlab-runner:
-    image: gitlab/gitlab-runner:alpine
-    deploy:
-      mode: replicated
-      replicas: 4
 configs:
   gitlab:
     file: ./gitlab.rb
