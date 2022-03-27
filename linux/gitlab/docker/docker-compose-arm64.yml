@@ -1,27 +1,22 @@
 version: "3.6"
 services:
   gitlab:
-    image: yrzr/gitlab-ce-arm64v8:latest
+    image: " yrzr/gitlab-ce-arm64v8:latest"
+    restart: always
+    hostname: "gitlab.example.com"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.example.com'
+        gitlab_rails['initial_root_password'] = 'adminadmin'
+        nginx['redirect_http_to_https'] = true
+
+        # Add any other gitlab.rb configuration here, each on its own line
     ports:
-      - "22:22"
       - "80:80"
       - "443:443"
+      - "22:22"
     volumes:
       - /srv/gitlab-ce/conf:/etc/gitlab:z
       - /srv/gitlab-ce/logs:/var/log/gitlab:z
       - /srv/gitlab-ce/data:/var/opt/gitlab:z
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-            "from_file('/omnibus_config.rb')"
-            nginx['redirect_http_to_https'] = true
-    configs:
-      - source: gitlab
-        target: /omnibus_config.rb
-    secrets:
-      - gitlab_root_password
-configs:
-  gitlab:
-    file: ./gitlab.rb
-secrets:
-  gitlab_root_password:
-    file: ./root_password.txt
+    shm_size: "256m"
