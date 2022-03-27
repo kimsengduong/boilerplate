@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   gitlab:
-    image: " yrzr/gitlab-ce-arm64v8:latest"
+    image: "yrzr/gitlab-ce-arm64v8:latest"
     restart: always
     hostname: "gitlab.example.com"
     environment:
