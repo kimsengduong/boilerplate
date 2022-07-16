@@ -1,3 +1,5 @@
 sh ./scripts/create-volume-path.sh
 
-docker stack deploy --compose-file ./docker/docker-compose-arm64.yml gitlab
+docker-compose -f docker/docker-compose-arm64.yml up -d
+
+# docker stack deploy --compose-file ./docker/docker-compose-arm64.yml gitlab
